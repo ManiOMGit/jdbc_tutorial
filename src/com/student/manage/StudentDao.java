@@ -18,6 +18,7 @@ public class StudentDao {
 		ps.setString(2, stu.getStudentPhone());
 		ps.setString(3, stu.getStudentCity());
 		ps.executeUpdate();
+		con.close();
 		return true;
 	}
 	
@@ -35,6 +36,7 @@ public class StudentDao {
 			Student stu=new Student(id, sname, sphone, scity);
 			list.add(stu);
 		}
+		con.close();
 		return list;
 	}
 	public static void deleteStudent(int id) {
@@ -51,6 +53,7 @@ public class StudentDao {
 				int count=stmnt.getUpdateCount();
 				System.out.println("No of rows affected= "+count);
 			}
+			con.close();
 		} catch (ClassNotFoundException | SQLException e) {
 			
 			e.printStackTrace();
