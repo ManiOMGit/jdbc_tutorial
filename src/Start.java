@@ -21,7 +21,7 @@ public class Start {
 			int c = Integer.parseInt(bf.readLine());
 			if (c == 1) {
 				System.out.println("Enter Student name....");
-		
+
 				String name = bf.readLine();
 				System.out.println("Enter Student Phone Number");
 				String phone = bf.readLine();
@@ -32,21 +32,26 @@ public class Start {
 				StudentDao.insertStudentIntoDbV1(student);
 
 			} else if (c == 2) {
-				List<Student> students=StudentDao.queryStudents();
+				List<Student> students = StudentDao.queryStudents();
 				System.out.println(students);
-				for(Student s: students) {
+				for (Student s : students) {
 					System.out.println(s);
 					System.out.println();
 				}
 
 			} else if (c == 3) {
 				System.out.println("Enter student id to delete");
-				int id=Integer.parseInt(bf.readLine());
+				int id = Integer.parseInt(bf.readLine());
 				StudentDao.deleteStudent(id);
 
-			} else if (c == 4) {
+			}else if(c==4) {
+				System.out.println("Enter student details to update");
+				StudentDao.updateStudent();
+			}
+			else if (c == 5) {
 				break;
-			} else {
+			} 
+			else {
 
 			}
 		}
