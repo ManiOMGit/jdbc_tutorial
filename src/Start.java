@@ -29,7 +29,7 @@ public class Start {
 				String city = bf.readLine();
 				Student student = new Student(name, phone, city);
 				System.out.println(student);
-				StudentDao.insertStudentInToDb(student);
+				StudentDao.insertStudentIntoDbV1(student);
 
 			} else if (c == 2) {
 				List<Student> students=StudentDao.queryStudents();

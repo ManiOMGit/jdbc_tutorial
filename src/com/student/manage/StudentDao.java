@@ -21,6 +21,21 @@ public class StudentDao {
 		con.close();
 		return true;
 	}
+	public static boolean insertStudentIntoDbV1(Student stu) {
+		try {
+			Connection con=DbConnection.createDbConnection();
+			String query=String.format("insert into student(sname,sphone,scity) values('%s','%s','%s')", stu.getStudentName()
+					,stu.getStudentPhone(),stu.getStudentCity());
+			Statement stmnt=con.createStatement();
+			stmnt.executeUpdate(query);
+			con.close();
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+	}
 	
 	public static List<Student> queryStudents() throws ClassNotFoundException, SQLException {
 		Connection con=DbConnection.createDbConnection();
