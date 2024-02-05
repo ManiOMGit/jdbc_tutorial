@@ -32,7 +32,8 @@ public class Start {
 				StudentDao.insertStudentIntoDbV1(student);
 
 			} else if (c == 2) {
-				List<Student> students = StudentDao.queryStudents();
+				// List<Student> students = StudentDao.queryStudents();
+				List<Student> students = StudentDao.fetchStudentsInSortedOrder();
 				System.out.println(students);
 				for (Student s : students) {
 					System.out.println(s);
@@ -42,17 +43,15 @@ public class Start {
 			} else if (c == 3) {
 				System.out.println("Enter student id to delete");
 				int id = Integer.parseInt(bf.readLine());
-				//StudentDao.deleteStudent(id);
-				System.out.println("Rows affected= "+StudentDao.deleteStudentV1(id));
+				// StudentDao.deleteStudent(id);
+				System.out.println("Rows affected= " + StudentDao.deleteStudentV1(id));
 
-			}else if(c==4) {
+			} else if (c == 4) {
 				System.out.println("Enter student details to update");
 				StudentDao.updateStudent();
-			}
-			else if (c == 5) {
+			} else if (c == 5) {
 				break;
-			} 
-			else {
+			} else {
 
 			}
 		}

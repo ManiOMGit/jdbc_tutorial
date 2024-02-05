@@ -56,22 +56,47 @@ public class StudentDao {
 		return list;
 	}
 
+	public static List<Student> fetchStudentsInSortedOrder() {
+		List<Student> students = new ArrayList();
+		try {
+			Connection con = DbConnection.createDbConnection();
+			String query = "select * from student order by sname";
+			Statement stmnt = con.createStatement();
+			ResultSet rs = stmnt.executeQuery(query);
+
+			while (rs.next()) {
+				int id = rs.getInt(1);
+				String sname = rs.getString(2);
+				String sphone = rs.getString(3);
+				String scity = rs.getString(4);
+				Student stu = new Student(id, sname, sphone, scity);
+				students.add(stu);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return students;
+
+	}
+
 	public static void updateStudent() {
 		try {
-			Connection con=DbConnection.createDbConnection();
-			String query="update student set scity='ttp' where sid=12";
-			Statement stmnt=con.createStatement();
+			Connection con = DbConnection.createDbConnection();
+			String query = "update student set scity='ttp' where sid=12";
+			Statement stmnt = con.createStatement();
 			stmnt.executeUpdate(query);
 			con.close();
 		} catch (ClassNotFoundException e) {
-			
+
 			e.printStackTrace();
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 		}
-		
+
 	}
+
 	public static void deleteStudent(int id) {
 		try {
 			Connection con = DbConnection.createDbConnection();
@@ -79,7 +104,7 @@ public class StudentDao {
 			Statement stmnt = con.createStatement();
 			boolean res = stmnt.execute(query);
 			System.out.println("Result is: " + res);
-			if (res == true) { 
+			if (res == true) {
 				stmnt.getResultSet();
 			} else {
 				int count = stmnt.getUpdateCount();
@@ -91,14 +116,15 @@ public class StudentDao {
 			e.printStackTrace();
 		}
 	}
+
 	public static int deleteStudentV1(int id) {
-		int rowsAffected=0;
+		int rowsAffected = 0;
 		try {
-			Connection con=DbConnection.createDbConnection();
-			Statement stmnt=con.createStatement();
-			String query=String.format("delete from student where sid=%d",id);
+			Connection con = DbConnection.createDbConnection();
+			Statement stmnt = con.createStatement();
+			String query = String.format("delete from student where sid=%d", id);
 			System.out.println(query);
-			rowsAffected=stmnt.executeUpdate(query);
+			rowsAffected = stmnt.executeUpdate(query);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
