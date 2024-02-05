@@ -42,7 +42,8 @@ public class Start {
 			} else if (c == 3) {
 				System.out.println("Enter student id to delete");
 				int id = Integer.parseInt(bf.readLine());
-				StudentDao.deleteStudent(id);
+				//StudentDao.deleteStudent(id);
+				System.out.println("Rows affected= "+StudentDao.deleteStudentV1(id));
 
 			}else if(c==4) {
 				System.out.println("Enter student details to update");

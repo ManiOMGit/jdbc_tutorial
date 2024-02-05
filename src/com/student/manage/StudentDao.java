@@ -79,7 +79,7 @@ public class StudentDao {
 			Statement stmnt = con.createStatement();
 			boolean res = stmnt.execute(query);
 			System.out.println("Result is: " + res);
-			if (res == true) {
+			if (res == true) { 
 				stmnt.getResultSet();
 			} else {
 				int count = stmnt.getUpdateCount();
@@ -90,6 +90,23 @@ public class StudentDao {
 
 			e.printStackTrace();
 		}
+	}
+	public static int deleteStudentV1(int id) {
+		int rowsAffected=0;
+		try {
+			Connection con=DbConnection.createDbConnection();
+			Statement stmnt=con.createStatement();
+			String query=String.format("delete from student where sid=%d",id);
+			System.out.println(query);
+			rowsAffected=stmnt.executeUpdate(query);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rowsAffected;
 	}
 
 }
