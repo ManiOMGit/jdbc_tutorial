@@ -80,6 +80,25 @@ public class StudentDao {
 
 	}
 
+	public static List<String> fetchStudentFromRequiredCity(String city) {
+		List<String> students = new ArrayList();
+		try {
+			Connection con = DbConnection.createDbConnection();
+			Statement stmnt = con.createStatement();
+			String query = String.format("select sname from student where scity='%s'", city);
+			ResultSet rs = stmnt.executeQuery(query);
+			while (rs.next()) {
+				String sname = rs.getString(1);
+				students.add(sname);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return students;
+	}
+
 	public static void updateStudent() {
 		try {
 			Connection con = DbConnection.createDbConnection();

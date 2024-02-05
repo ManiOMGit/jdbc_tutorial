@@ -15,9 +15,11 @@ public class Start {
 
 		while (true) {
 			System.out.println("Press 1 to ADD Student");
-			System.out.println("Press 2 to Delete Student");
-			System.out.println("Press 3 to display Students");
+			System.out.println("Press 2 to Display Student");
+			System.out.println("Press 3 to delete Students");
 			System.out.println("Press 4 to exit app");
+			System.out.println("Press 6 to search students based on city");
+			System.out.println();
 			int c = Integer.parseInt(bf.readLine());
 			if (c == 1) {
 				System.out.println("Enter Student name....");
@@ -51,6 +53,13 @@ public class Start {
 				StudentDao.updateStudent();
 			} else if (c == 5) {
 				break;
+			} else if (c == 6) {
+				System.out.println("Enter city name to fetch students");
+				String city = bf.readLine();
+				List<String> names = StudentDao.fetchStudentFromRequiredCity(city);
+				for (String name : names) {
+					System.out.println(name);
+				}
 			} else {
 
 			}
