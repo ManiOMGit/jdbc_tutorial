@@ -4,6 +4,7 @@ import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.student.manage.ExecuteMethodOperations;
 import com.student.manage.Student;
 import com.student.manage.StudentDao;
 
@@ -19,6 +20,7 @@ public class Start {
 			System.out.println("Press 3 to delete Students");
 			System.out.println("Press 4 to exit app");
 			System.out.println("Press 6 to search students based on city");
+			System.out.println("Press 7 to give your own Query...");
 			System.out.println();
 			int c = Integer.parseInt(bf.readLine());
 			if (c == 1) {
@@ -60,6 +62,10 @@ public class Start {
 				for (String name : names) {
 					System.out.println(name);
 				}
+			} else if (c == 7) {
+				System.out.println("Enter your query.....");
+				String query = bf.readLine();
+				ExecuteMethodOperations.updateUsage(query);
 			} else {
 
 			}
